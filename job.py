@@ -8,7 +8,7 @@ def jlist():
 		print (i.split('%'))
 
 def add():
-	jobstring = input("enter company name:") + '%' + input("enter position:") + '%' + input("enter date:") + '\n'
+	jobstring = input('enter company name:') + '%' + input('enter position:') + '%' + input('enter date:') + '\n'
 	fhandle.write(jobstring)
 	print ('job was added')
 
@@ -18,9 +18,14 @@ def abclist():
 	for i in alphabetlist:
 		print (i.split('%'))
 
-#def check():
-
-
+def check():
+	company =  input('enter company name:')
+	position = input('enter position:')
+	for i in joblist:
+		if company == i.split('%')[0]:
+			if position == i.split('%')[1]:
+				return(print ('applied in',i.split('%')[2]))
+	print('never applied')
 
 
 
@@ -28,12 +33,16 @@ while True:
 	func = input ()
 	if func == 'list':
 		jlist()
-	if func =='add':
+	elif func =='add':
 		add()
-	if func == 'exit':
+	elif func == 'exit':
 		break
-	if func == 'abclist':
+	elif func == 'abclist':
 		abclist()
+	elif func == 'check':
+		check()
+	else:
+		print('no such function')
 
 	fhandle = open(path,'r+')
 	jobstr = fhandle.read()
